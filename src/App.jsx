@@ -11,7 +11,8 @@ function App() {
       price: "₹59,999",
       discount: "25% OFF",
       store: "Amazon",
-      image: "https://via.placeholder.com/200"
+      image: "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=400&auto=format&fit=crop&q=60",
+      url: "https://www.amazon.in/s?k=iphone+14"
     },
     {
       id: 2,
@@ -20,7 +21,8 @@ function App() {
       price: "₹69,999",
       discount: "30% OFF",
       store: "Flipkart",
-      image: "https://via.placeholder.com/200"
+      image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&auto=format&fit=crop&q=60",
+      url: "https://www.flipkart.com/search?q=dell+laptop"
     },
     {
       id: 3,
@@ -29,7 +31,8 @@ function App() {
       price: "₹1,499",
       discount: "50% OFF",
       store: "Amazon",
-      image: "https://via.placeholder.com/200"
+      image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&auto=format&fit=crop&q=60",
+      url: "https://www.amazon.in/s?k=men+jacket"
     },
     {
       id: 4,
@@ -38,7 +41,8 @@ function App() {
       price: "₹49,999",
       discount: "20% OFF",
       store: "Flipkart",
-      image: "https://via.placeholder.com/200"
+      image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&auto=format&fit=crop&q=60",
+      url: "https://www.flipkart.com/search?q=samsung+galaxy+s23"
     }
   ];
 
@@ -52,10 +56,20 @@ function App() {
     );
   });
 
+  const handleGrabDeal = (url) => {
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      alert("Deal link coming soon!");
+    }
+  };
+
   return (
     <div className="container">
 
-      <h1>🔥 ADS.In - Best Online Deals</h1>
+      <h1 style={{ color: "#1e293b", marginBottom: "20px" }}>
+        🔥 ADS.In - Best Online Deals
+      </h1>
 
       {/* Search Bar */}
       <input
@@ -91,7 +105,9 @@ function App() {
               {item.store === "Amazon" ? "🛒 Amazon" : "🛍 Flipkart"}
             </p>
 
-            <button className="deal">Grab Deal</button>
+            <button className="deal" onClick={() => handleGrabDeal(item.url)}>
+              Grab Deal
+            </button>
 
           </div>
         ))}
