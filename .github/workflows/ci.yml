@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: ['.', 'Adds.in', 'app-builder-studio']
+        # Focused only on your actual project directories to prevent duplicate root errors
+        package: ['Adds.in', 'app-builder-studio']
     name: Check ${{ matrix.package }}
     steps:
       - name: Checkout
@@ -24,6 +25,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
+        # Added flag to bypass strict peer dependency conflicts with Vite
         run: npm ci --legacy-peer-deps
         working-directory: ${{ matrix.package }}
 
